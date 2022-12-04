@@ -356,11 +356,20 @@ server <- function(session, input, output) {
     if(is.null(v_target)|| v_target == "")
       v_target = "Dropout"
     dt <- dashboard_dt %>% filter(Target==v_target)
-    Attendance <- factor(dt$Daytime_evening_attendance)
-    AttendanceData <- data.frame(Attendance)
+    #Attendance <- factor(dt$Daytime_evening_attendance)
+    #AttendanceData <- data.frame(Attendance)
     
-    cols <- hcl.colors(length(levels(Attendance)), "BrBG")
-    PieChart(Attendance, data = AttendanceData, hole = 0, fill = cols, labels_cex = 1.6)
+    #cols <- hcl.colors(length(levels(Attendance)), "BrBG")
+    #PieChart(Attendance, data = AttendanceData, hole = 0, fill = cols, labels_cex = 1.6)
+
+    slices <- (dt %>% group_by(Daytime_evening_attendance) %>% summarise(count=n()))$count
+    lbls <- (dt %>% group_by(Daytime_evening_attendance) %>% summarise(count=n()))$Daytime_evening_attendance
+    pct <- round(slices/sum(slices)*100)
+    lbls <- paste(lbls, pct) # add percents to labels
+    lbls <- paste(lbls,"%",sep="") # ad % to labels
+    pie(slices,labels = lbls, col=hcl.colors(length(lbls), "Greens"),  radious = 2 )
+     
+    
   })
   # 1.(e) Previous qualication via grade -----------------
   output$previous_qualification <- renderPlot({

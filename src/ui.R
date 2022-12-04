@@ -104,7 +104,7 @@ dashboardPage(
     sidebarMenu(
       menuItem("Dashboard", tabName = "tab_dashboard", icon = icon("dashboard")),
       menuItem("Observation", tabName = "tab_observation", icon = icon("info")),
-      menuItem("Analysis", tabName = "tab_analysis", icon = icon("stream")),
+      #menuItem("Analysis", tabName = "tab_analysis", icon = icon("stream")),
       menuItem("Data", tabName = "tab_data", icon = icon("compass"))
     )
   ),
@@ -135,7 +135,7 @@ dashboardPage(
                           choices = c("Dropout", "Graduate", "Enrolled"),
                           selected = c("Dropout"),
                           multiple = FALSE),
-              width=6
+              width=6 
             )
           )
         ),
@@ -218,10 +218,10 @@ dashboardPage(
         )
       ),
       # ANALYSIS ---------------
-      tabItem(
-        "tab_analysis",
-        h2("TODO: Add analysis items here")
-      ),
+      #tabItem(
+       # "tab_analysis",
+       # h2("TODO: Add analysis items here")
+     # ),
       # DATA ---------------
       tabItem(
         "tab_data",
