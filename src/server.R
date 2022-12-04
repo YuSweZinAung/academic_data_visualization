@@ -1,71 +1,6 @@
 server <- function(session, input, output) {
   
-  # 1. Dashboard setup ----------------
  
-  # 
-  # dashboard_dt <- dashboard_dt %>% mutate(  Application_mode =  case_when(
-  #   Application_mode== 1 ~ "1st phase \n- general contingent",
-  #   Application_mode== 2 ~ "Ordinance No. 612/93 5 - 1st phase - special contingent (Azores Island)",
-  #   Application_mode== 7 ~ "Holders of other higher courses",
-  #   Application_mode== 10 ~ "Ordinance No. 854-B/99",
-  #   Application_mode== 15 ~ "International student (bachelor)",
-  #   Application_mode== 16 ~ "1st phase - special contingent (Madeira Island)",
-  #   Application_mode== 17 ~ "2nd phase - general contingent",
-  #   Application_mode== 16 ~ "3rd phase - general contingent",
-  #   Application_mode== 26 ~ "Ordinance No. 533-A/99, item b2) (Different Plan)",
-  #   Application_mode== 27 ~ "Ordinance No. 533-A/99, item b3 (Other Institution)",
-  #   Application_mode== 39 ~ "Over 23 years old 42 - Transfer",
-  #   Application_mode== 43 ~ "Change of course",
-  #   Application_mode== 44 ~ "Technological specialization diploma holders",
-  #   Application_mode== 51 ~ "Change of institution/course",
-  #   Application_mode== 52 ~ "Short cycle diploma holders",
-  #   Application_mode== 57 ~ "Change of institution/course (International)" , 
-  #   TRUE ~ "Other"
-  #   
-  # ), Course =  case_when(
-  #   Course== 33  ~ "Biofuel Production Technologies",
-  #   Course== 171  ~ "Animation and Multimedia Design",
-  #   Course== 8014  ~ "Social Service (evening attendance)",
-  #   Course== 9003  ~ "Agronomy",
-  #   Course== 9070  ~ "Communication Design",
-  #   Course== 9085  ~ "Veterinary Nursing",
-  #   Course== 9119  ~ "Informatics Engineering",
-  #   Course== 9130  ~ "Equinculture",
-  #   Course== 9147  ~ "Management",
-  #   Course== 9238  ~ "Social Service",
-  #   Course== 9254  ~ "Tourism",
-  #   Course== 9500  ~ "Nursing",
-  #   Course== 9556  ~ "Oral Hygiene",
-  #   Course== 9670  ~ "Advertising and Marketing Management",
-  #   Course== 9773  ~ "Journalism and Communication",
-  #   Course== 9853  ~ "Basic Education",
-  #   Course== 9991  ~ "Management (evening attendance)" 
-  #   
-  # ), Daytime_evening_attendance = case_when(
-  #   Daytime_evening_attendance == 1 ~ "daytime",
-  #   Daytime_evening_attendance == 0 ~ "evening"
-  #   
-  # ), Previous_qualification = case_when(
-  #   
-  #   Previous_qualification == 1 ~ "Secondary education", 
-  #   Previous_qualification == 2  ~ "Higher education - bachelor's degree", 
-  #   Previous_qualification == 3  ~ "Higher education - degree", 
-  #   Previous_qualification == 4  ~ "Higher education - master's",
-  #   Previous_qualification == 5  ~ "Higher education - doctorate",
-  #   Previous_qualification == 6  ~ "Frequency of higher education",
-  #   Previous_qualification == 9  ~ "12th year of schooling - not completed",
-  #   Previous_qualification == 10  ~ "11th year of schooling - not completed",
-  #   Previous_qualification == 12  ~ "Other - 11th year of schooling",
-  #   Previous_qualification == 14   ~ "10th year of schooling",
-  #   Previous_qualification == 15  ~ "10th year of schooling - not completed",
-  #   Previous_qualification == 19  ~ "Basic education 3rd cycle (9th/10th/11th year) or equiv.",
-  #   Previous_qualification == 38  ~ "Basic education 2nd cycle (6th/7th/8th year) or equiv.",
-  #   Previous_qualification == 39  ~ "Technological specialization course",
-  #   Previous_qualification == 40  ~ "Higher education - degree (1st cycle)",
-  #   Previous_qualification == 42  ~ "Professional higher technical course",
-  #   Previous_qualification == 43  ~ "Higher education - master (2nd cycle)" 
-  # ) 
-  # )
   
   dashboard_dt <- academic_dt[,c("Course","Application_mode","Application_order","Daytime_evening_attendance","Previous_qualification","Previous_qualification_grade" , "Target")]
   dashboard_dt <- academic_dt %>% mutate(Marital_status = case_when(  
@@ -413,7 +348,7 @@ server <- function(session, input, output) {
       geom_line(color = "black", size = 1) +
       geom_point(color = "#0099f9", size = 5,pch = 24,
                  bg = "lightblue" ) +
-      theme_classic() + labs( y = "Application order", x = "Count")
+      theme_classic() + labs( y = "Count", x = "Application order")
   })
   # 1.(d) day time attendance ---------------
   output$daytime_attendance_summary <- renderPlot({

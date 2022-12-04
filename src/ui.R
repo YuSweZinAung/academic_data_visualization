@@ -19,7 +19,27 @@ observationXData <- c(
   "Tuition_fees_up_to_date",
   "Gender",
   "Scholarship_holder",
-  "Target"
+  "Target",  
+  "Application_order",
+  "Previous_qualification_grade",
+  "Admission_grade",
+  "Age_at_enrollment",
+  "International",
+  "Curricular_units_1st_sem_credited",
+  "Curricular_units_1st_sem_enrolled",
+  "Curricular_units_1st_sem_evaluations",
+  "Curricular_units_1st_sem_approved",
+  "Curricular_units_1st_sem_grade",
+  "Curricular_units_1st_sem_without_evaluations",
+  "Curricular_units_2nd_sem_credited",
+  "Curricular_units_2nd_sem_enrolled",
+  "Curricular_units_2nd_sem_evaluations",
+  "Curricular_units_2nd_sem_approved",
+  "Curricular_units_2nd_sem_grade",
+  "Curricular_units_2nd_sem_without_evaluations",
+  "Unemployment_rate",
+  "Inflation_rate",
+  "GDP"
 )
 observationYData <- c(
   "Application_order",
@@ -171,14 +191,14 @@ dashboardPage(
         fluidRow(
           column(12, align="center",
            box(
-             selectInput("obX", "ObservationX",
+             selectInput("obX", "Observation X-axis",
                          choices = observationXData,
                          selected = observationXData[1],
                          multiple = FALSE),
              width=6
            ),
            box(
-             selectInput("obY", "ObservationY",
+             selectInput("obY", "Observation Y-axis",
                          choices = observationYData,
                          selected = observationYData[1],
                          multiple = FALSE),
@@ -191,7 +211,7 @@ dashboardPage(
             box(
               title =  div(class="charts-title", h2("Observations")),
               solidHeader = TRUE,
-              plotOutput("observation", height=800, width = 1000),
+              plotOutput("observation", height=500, width = 1000),
               width = 12
             ) 
           )
