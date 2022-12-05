@@ -1,7 +1,5 @@
 server <- function(session, input, output) {
-  
- 
-  
+   
   dashboard_dt <- academic_dt[,c("Course","Application_mode","Application_order","Daytime_evening_attendance","Previous_qualification","Previous_qualification_grade" , "Target")]
   dashboard_dt <- academic_dt %>% mutate(Marital_status = case_when(  
     

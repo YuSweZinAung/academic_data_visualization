@@ -81,8 +81,8 @@ dashboardPage(
       type = "message",
       messageItem(
         from = "dummy-email@example.com",
-        message =  "",
-        icon = icon("envelope"),
+        message =  "Please give feedback to us.",
+        icon = icon("envelope"),   
         href = "mailto:dummy-email@example.com"
       ),
       icon = icon("comment")
@@ -156,7 +156,7 @@ dashboardPage(
             )
           )
         ),
-        # 4th row -> pie chart and cancdle chart ---------------
+        # 4th row -> pie chart and box plot chart ---------------
         fluidRow(
           column(12, align="center",
             box(
