@@ -190,7 +190,7 @@ dashboardPage(
         "tab_observation",
         fluidRow(
           column(12, align="center",
-           box(
+           box(background = "teal",
              selectInput("obX", "Observation X-axis",
                          choices = observationXData,
                          selected = observationXData[1],
