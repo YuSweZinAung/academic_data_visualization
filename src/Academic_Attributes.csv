@@ -19,7 +19,7 @@ Tuition_fees_up_to_date,Categorical
 Gender,Categorical
 Scholarship_holder,Categorical
 Age_at_enrollment,Continuous
-International,Continuous
+International,Categorical
 Curricular_units_1st_sem_credited,Continuous
 Curricular_units_1st_sem_enrolled,Continuous
 Curricular_units_1st_sem_evaluations,Continuous
