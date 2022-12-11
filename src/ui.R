@@ -119,7 +119,7 @@ dashboardPage(
         fluidRow(
           column(12, align="center",
             box(
-              title = div(class="charts-title", h2("Academic Data for Enrolment Summary")), 
+              title = "Academic Data for Enrolment Summary", status = "primary",
               solidHeader = TRUE,
               plotOutput("enrolment_summary_plot", height=250),
               width=12
@@ -130,8 +130,8 @@ dashboardPage(
         fluidRow(
           column(
             12, align="left",
-            box(
-              radioButtons("targetEnrolment", "Enrolment Class:",
+            box(title = "Enrolment class", status = "primary", solidHeader = TRUE,
+              radioButtons("targetEnrolment","",
                           choices = c("Dropout", "Graduate", "Enrolled"),
                           selected = c("Dropout")),
               
@@ -144,13 +144,13 @@ dashboardPage(
         fluidRow(
           column(12, align="center",
             box(
-              title = div(class="charts-title", h2("Course")), 
+              title = "Course", status = "primary",
               solidHeader = TRUE,
               plotOutput("course_summary", height=250, width = 500),
               width=6
             ),
             box(
-              title = div(class="charts-title", h2("Application Order")), 
+              title = "Application Order", status = "primary",
               solidHeader = TRUE,
               plotOutput("application_order_summary", height=250, width = 500),
               width=6
@@ -161,13 +161,13 @@ dashboardPage(
         fluidRow(
           column(12, align="center",
             box(
-              title = div(class="charts-title", h2("Daytime/evening Attendance")), 
+              title = "Daytime/evening Attendance", status = "primary",
               solidHeader = TRUE,
               plotOutput("daytime_attendance_summary", height=250, width = 500),
               width=6
             ),
             box(
-              title = div(class="charts-title", h2("Previous Qualification via Grade")), 
+              title = "Previous Qualification via Grade", status = "primary",
               solidHeader = TRUE,
               plotOutput("previous_qualification", height=250, width = 500),
               width=6
@@ -178,7 +178,7 @@ dashboardPage(
         fluidRow(
          column(12, align="center",
           box(
-            title = div(class="charts-title", h2("Application Mode")), 
+            title = "Application Mode",  status = "primary",
             solidHeader = TRUE,
             plotOutput("application_mode", height=250, width = 500),
             width=6
@@ -207,9 +207,9 @@ dashboardPage(
         ),
         
         fluidRow(
-          column(12, align="center",
+          column(12, align="center", 
             box(
-              title =  div(class="charts-title", h2("Observations")),
+              title =  "Observations", status = "primary",
               solidHeader = TRUE,
               plotOutput("observation", height=500, width = 1000),
               width = 12
