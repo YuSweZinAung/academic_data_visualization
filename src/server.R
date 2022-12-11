@@ -388,16 +388,41 @@ server <- function(session, input, output) {
     ggplot(enrolment_summary_reactive()) + geom_bar(aes(y = fct_rev(fct_infreq(Application_mode))) ,color="black",fill="lightblue") +
       theme_classic() + labs(  y = "Application mode", x = "Count")
   })
-  
+
   # 2. Observations ----------------
+  
+  # Adding a slider
+  observeEvent(input$obX, {
+    if( column_attributes$Type[column_attributes$Attribute==input$obX] == "Continuous"){
+    output$binwid <- renderUI({
+      sliderInput(inputId = 'bins',
+                  label = "Choose the number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 15
+      )
+      
+    })
+    }
+    else{
+      output$binwid <- NULL
+    }
+    
+    
+  })
+  
   output$observation <- renderPlot({
     colX <- input$obX
     colY <- input$obY
+
     if( column_attributes$Type[column_attributes$Attribute==colX] == "Continuous"){
       
-      ggplot(dashboard_dt, aes_string(x = colX , y = colY  )) + geom_point()+  theme_classic()  + 
+      
+      ggplot(dashboard_dt, aes_string(x = colX)) + 
+        geom_histogram(bins = input$bins)+  theme_classic()  + 
         theme(axis.text.x = element_text(angle = 45 , vjust=1 , hjust=1)) + 
-        labs(y = str_replace_all(colY, "_", " "), x = str_replace_all(colX, "_", " "))  +  facet_grid(. ~ Target)
+        labs(y = str_replace_all(colY, "_", " "), x = str_replace_all(colX, "_", " ")) +
+        facet_grid(. ~ Target)
     } else
     {
       ggplot(dashboard_dt, aes_string(x=colX, y= colY  )) +

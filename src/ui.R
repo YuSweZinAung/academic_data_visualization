@@ -129,13 +129,14 @@ dashboardPage(
         # 2nd row -> drop down target ---------------
         fluidRow(
           column(
-            12, align="center",
+            12, align="left",
             box(
-              selectInput("targetEnrolment", "Enrolment Class",
+              radioButtons("targetEnrolment", "Enrolment Class:",
                           choices = c("Dropout", "Graduate", "Enrolled"),
-                          selected = c("Dropout"),
-                          multiple = FALSE),
-              width=6 
+                          selected = c("Dropout")),
+              
+              
+              width=3 
             )
           )
         ),
@@ -195,17 +196,16 @@ dashboardPage(
                          choices = observationXData,
                          selected = observationXData[1],
                          multiple = FALSE),
-             width=6
-           ),
-           box(
              selectInput("obY", "Observation Y-axis",
                          choices = observationYData,
                          selected = observationYData[1],
                          multiple = FALSE),
-             width=6
+             uiOutput("binwid"),
+             width=12
            )
           )
         ),
+        
         fluidRow(
           column(12, align="center",
             box(
