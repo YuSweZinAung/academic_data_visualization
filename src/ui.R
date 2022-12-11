@@ -195,10 +195,11 @@ dashboardPage(
                          choices = observationXData,
                          selected = observationXData[1],
                          multiple = FALSE),
-             selectInput("obY", "Observation Y-axis",
-                         choices = observationYData,
-                         selected = observationYData[1],
-                         multiple = FALSE),
+             # selectInput("obY", "Observation Y-axis",
+             #             choices = observationYData,
+             #             selected = observationYData[1],
+             #             multiple = FALSE),
+             uiOutput("obY"),
              uiOutput("binwid"),
              width=12
            )

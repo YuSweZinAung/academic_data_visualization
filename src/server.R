@@ -394,6 +394,7 @@ server <- function(session, input, output) {
   # Adding a slider
   observeEvent(input$obX, {
     if( column_attributes$Type[column_attributes$Attribute==input$obX] == "Continuous"){
+      output$obY <- NULL
     output$binwid <- renderUI({
       sliderInput(inputId = 'bins',
                   label = "Choose the number of bins:",
@@ -405,7 +406,34 @@ server <- function(session, input, output) {
     })
     }
     else{
+      observationYData <- c(
+        "Application_order",
+        "Previous_qualification_grade",
+        "Admission_grade",
+        "Age_at_enrollment", 
+        "Curricular_units_1st_sem_credited",
+        "Curricular_units_1st_sem_enrolled",
+        "Curricular_units_1st_sem_evaluations",
+        "Curricular_units_1st_sem_approved",
+        "Curricular_units_1st_sem_grade",
+        "Curricular_units_1st_sem_without_evaluations",
+        "Curricular_units_2nd_sem_credited",
+        "Curricular_units_2nd_sem_enrolled",
+        "Curricular_units_2nd_sem_evaluations",
+        "Curricular_units_2nd_sem_approved",
+        "Curricular_units_2nd_sem_grade",
+        "Curricular_units_2nd_sem_without_evaluations",
+        "Unemployment_rate",
+        "Inflation_rate",
+        "GDP"
+      )
       output$binwid <- NULL
+      output$obY <- renderUI({
+        selectInput("obY", "Observation Y-axis",
+                  choices = observationYData,
+                  selected = observationYData[1],
+                  multiple = FALSE)
+      })
     }
     
     
