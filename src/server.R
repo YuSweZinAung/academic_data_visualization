@@ -421,7 +421,7 @@ server <- function(session, input, output) {
       ggplot(dashboard_dt, aes_string(x = colX)) + 
         geom_histogram(bins = input$bins)+  theme_classic()  + 
         theme(axis.text.x = element_text(angle = 45 , vjust=1 , hjust=1)) + 
-        labs(y = str_replace_all(colY, "_", " "), x = str_replace_all(colX, "_", " ")) +
+        labs(y = "Count", x = str_replace_all(colX, "_", " ")) +
         facet_grid(. ~ Target)
     } else
     {
